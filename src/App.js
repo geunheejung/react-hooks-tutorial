@@ -1,18 +1,27 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import Counter from './components/Conuter';
 import Post from './components/Post';
 
-class App extends Component {
-  render() {
-    return (
-      <div>
-        <h2>Counter</h2>
-        <Counter />
-        <h2>Post</h2>
-        <Post />
-      </div>
-    );
-  }
+const App = () => {  
+  const [isHidePost, togglePostView] = useState(false);
+
+  const toggle = () => togglePostView(!isHidePost);
+
+  return (
+    <div>
+      <h2>Counter</h2>
+      <Counter />
+      <h2>Post</h2>
+      <button onClick={toggle}>
+        Toggle Post
+      </button>
+      {
+        isHidePost || (
+          <Post />
+        )
+      }
+    </div>
+  );
 }
 
 export default App;

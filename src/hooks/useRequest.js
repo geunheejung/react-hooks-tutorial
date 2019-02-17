@@ -22,6 +22,10 @@ const useRequest = url => {
   // 렌더링 될 때, 그리고 url 이 바뀔때만 실행됨.
   useEffect(() => {
     initalFetch();
+
+    return () => {
+      console.log('unMount!!');
+    }
   }, [url]);
 
   return [
